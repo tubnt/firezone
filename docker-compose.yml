@@ -8,7 +8,7 @@ services:
       - ./priv/pki:/data/caddy/pki
     ports:
       - 80:80
-      - 8443:443
+      - 8444:443
     networks:
       app:
         ipv4_address: 172.28.0.99
