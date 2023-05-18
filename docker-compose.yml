@@ -7,12 +7,11 @@ services:
       - ./priv/Caddyfile:/etc/caddy/Caddyfile
       - ./priv/pki:/data/caddy/pki
     ports:
-      - 80:80
-      - 443:443
+      - 808:80
+      - 8443:443
     networks:
       app:
         ipv4_address: 172.28.0.99
-        ipv6_address: 2001:3990:3990::99
 
   firezone:
     build:
@@ -46,9 +45,7 @@ services:
       - NET_ADMIN
       - SYS_MODULE
     sysctls:
-      - net.ipv6.conf.all.disable_ipv6=0
       - net.ipv4.ip_forward=1
-      - net.ipv6.conf.all.forwarding=1
     depends_on:
       postgres:
         condition: 'service_healthy'
